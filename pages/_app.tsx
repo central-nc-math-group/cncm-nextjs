@@ -1,28 +1,30 @@
-import { Fragment, useEffect } from "react";
-import Head from 'next/head';
-import { ThemeProvider, CssBaseline } from '@material-ui/core';
-import type { AppProps } from "next/app";
-import { theme } from '../utils';
+import { Fragment } from "react";
+import { AppProps } from "next/app";
+import { ThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Theme from "../components/Theme";
+import dynamic from "next/dynamic";
+//import Footer from "../components/Footer";
+//import NavBar from "../components/NavBar";
+//import isServer from 'detect-node';
 
-export default function App(props: AppProps) {
-  const { Component, pageProps } = props;
+const NavBar = dynamic(import("../components/NavBar"));
+const Footer = dynamic(import("../components/Footer"));
 
-  useEffect(() => {
-    const jssStyles: Element | null = document.querySelector('#jss-server-side');
-    if (!!jssStyles && !!jssStyles.parentElement) {
-      jssStyles.parentElement.removeChild(jssStyles);
-    }
-  }, []);
-
+export default function App({ Component, pageProps }: AppProps) {
   return (
     <Fragment>
-      <Head>
-        <title>CNCM</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-      </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={Theme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <header>
+          <NavBar />
+        </header>
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <footer>
+          <Footer />
+        </footer>
       </ThemeProvider>
     </Fragment>
   );

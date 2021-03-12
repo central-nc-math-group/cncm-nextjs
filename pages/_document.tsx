@@ -1,11 +1,10 @@
 import { Children } from "react";
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 import type { DocumentContext } from "next/document";
-import type { AppProps } from "next/app";
-import { ServerStyleSheets } from '@material-ui/core';
-import { theme } from "../utils";
+import { ServerStyleSheets } from "@material-ui/core";
+import theme from "../components/Theme";
 
-export default class PageDocument extends Document {
+export default class Document extends NextDocument {
   render() {
     return (
       <Html lang="en">
@@ -16,7 +15,7 @@ export default class PageDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
         </Head>
-        <body>
+        <body style={{ margin: 0 }}>
           <Main />
           <NextScript />
         </body>
@@ -25,7 +24,7 @@ export default class PageDocument extends Document {
   }
 }
 
-PageDocument.getInitialProps = async (ctx: DocumentContext) => {
+Document.getInitialProps = async (ctx: DocumentContext) => {
   const sheets: ServerStyleSheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;
 
@@ -34,10 +33,13 @@ PageDocument.getInitialProps = async (ctx: DocumentContext) => {
       enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     });
 
-  const initialProps = await Document.getInitialProps(ctx);
+  const initialProps = await NextDocument.getInitialProps(ctx);
 
   return {
-...initialProps,
-    styles: [...Children.toArray(initialProps.styles), sheets.getStyleElement()],
+    ...initialProps,
+    styles: [
+      ...Children.toArray(initialProps.styles),
+      sheets.getStyleElement(),
+    ],
   };
 };
