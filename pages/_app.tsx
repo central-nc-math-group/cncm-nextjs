@@ -8,8 +8,8 @@ export default function App(props: AppProps) {
   const { Component, pageProps } = props;
 
   useEffect(() => {
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (!!jssStyles) {
+    const jssStyles: Element | null = document.querySelector('#jss-server-side');
+    if (!!jssStyles && !!jssStyles.parentElement) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
