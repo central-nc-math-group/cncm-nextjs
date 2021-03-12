@@ -28,7 +28,6 @@ const tabHeight = "36px";
 const styles = makeStyles((theme: Theme) => ({
   app: {
     textAlign: "center",
-    backgroundColor: "#FFFFFF",
   },
   appHeader: {
     background: "linear-gradient(to right, #007CCC, #000000)",
