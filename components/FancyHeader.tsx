@@ -112,7 +112,7 @@ const FancyHeader: FunctionComponent<{ heading: Element | string }> = ({
               color: "#ffffff",
               distance: 150,
               enable: true,
-              opacity: 0.5,
+              opacity: 0.2,
               width: 1,
             },
             collisions: {
@@ -134,7 +134,7 @@ const FancyHeader: FunctionComponent<{ heading: Element | string }> = ({
               value: 80,
             },
             opacity: {
-              value: 0.5,
+              value: 0.2,
             },
             shape: {
               type: "circle",

@@ -23,7 +23,7 @@ const FancyHeader = dynamic(import("../components/FancyHeader"));
 
 const autoredirects: AutoRedirect[] = autoredirect as AutoRedirect[];
 
-const tabHeight = "36px";
+const tabHeight = "48px";
 
 const styles = makeStyles((theme: Theme) => ({
   app: {
@@ -207,8 +207,8 @@ const Home: FunctionComponent<{}> = () => {
             </div>
           </Paper>
           <p>
-            If you would like to check out our Discord or YouTube, then click
-            the tiles below!
+            If you would like to join the CNCM Discord server or check out our
+            Youtube channel, click the tiles below!
           </p>
           <Grid container spacing={3} style={{ justifyContent: "center" }}>
             <Grid item xs className={classes.joinUsBorder}>
