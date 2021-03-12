@@ -2,25 +2,8 @@ import { Children } from "react";
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import type { DocumentContext } from "next/document";
 import type { AppProps } from "next/app";
-import { ServerStyleSheets, createMuiTheme, Theme } from '@material-ui/core';
-import { red } from "@material-ui/core/colors";
-
-const theme: Theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#556cd6',
-    },
-    secondary: {
-      main: '#19857b',
-    },
-    error: {
-      main: red.A400,
-    },
-    background: {
-      default: '#fff',
-    },
-  },
-});
+import { ServerStyleSheets } from '@material-ui/core';
+import { theme } from "../utils";
 
 export default class PageDocument extends Document {
   render() {
