@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Theme from "../components/Theme";
 import dynamic from "next/dynamic";
+import "../styles/globals.css";
 
 const NavBar = dynamic(import("../components/NavBar"));
 const Footer = dynamic(import("../components/Footer"));

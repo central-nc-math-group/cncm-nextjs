@@ -1,4 +1,4 @@
-import { FunctionComponent, SyntheticEvent, useState } from "react";
+import { FunctionComponent, ChangeEvent, useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -19,7 +19,7 @@ import dynamic from "next/dynamic";
 
 import type { Theme, AutoRedirect } from "../types";
 
-const FancyHeader = dynamic(import("../components/FancyHeader"));
+const Pythagorean = dynamic(import("../components/Pythagorean"));
 
 const autoredirects: AutoRedirect[] = autoredirect as AutoRedirect[];
 
@@ -70,6 +70,20 @@ const styles = makeStyles((theme: Theme) => ({
     minHeight: tabHeight,
     height: tabHeight,
   },
+  headerWrapper: {
+    height: "90vh",
+    backgroundColor: "#abcdef",
+  },
+  flexWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100%",
+  },
+  titleWrapper: {
+    padding: "5%",
+    textAlign: "left",
+  },
 }));
 
 const Home: FunctionComponent<{}> = () => {
@@ -78,10 +92,7 @@ const Home: FunctionComponent<{}> = () => {
   const theme = useTheme();
   const [value, setValue] = useState(0);
 
-  const handleChange = (
-    event: SyntheticEvent<Element, Event>,
-    newValue: any
-  ): void => {
+  const handleChange = (event: ChangeEvent<{}>, newValue: any): void => {
     setValue(newValue);
   };
 
@@ -120,6 +131,8 @@ const Home: FunctionComponent<{}> = () => {
     );
   };
 
+  const totalAnimationTime = 10;
+
   return (
     <div className={classes.app}>
       <Head>
@@ -129,9 +142,23 @@ const Home: FunctionComponent<{}> = () => {
           content="This is the Meta Tag that Eli, Srijan, and Sushrit need to give me!"
         />
       </Head>
-      <FancyHeader heading="Welcome to CNCM!">
-        Cyclic National Competitive Math Group
-      </FancyHeader>
+      <div className={classes.headerWrapper}>
+        <Grid container className={classes.flexWrapper}>
+          <Grid item xs={7} className={classes.titleWrapper}>
+            <Typography variant="h2">
+              <b>Welcome to CNCM!</b>
+            </Typography>
+            <Typography variant="body1" style={{ fontSize: "2rem" }}>
+              At CNCM, our mission is to enrich both the academic and
+              competitive math knowledge of students around the globe.
+            </Typography>
+          </Grid>
+          <Grid item xs={1} />
+          <Grid item xs={4}>
+            <Pythagorean />
+          </Grid>
+        </Grid>
+      </div>
       <div className={classes.body}>
         <Paper elevation={10} style={{ padding: "2em" }}>
           <p style={{ marginTop: 0 }}>
